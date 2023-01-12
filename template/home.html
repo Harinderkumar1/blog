@@ -1,0 +1,63 @@
+{% include 'base.html' %}
+{% block content %}
+
+<style>
+    img{
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 100%;
+        
+    }
+    .btns{
+        margin: 100px auto;
+    }
+    .button{
+        background-color: red;
+        color: white;
+    }
+    .button:hover{
+        background-color: black;
+        color: white;
+    }
+    .buttons{
+        background-color: black;
+        color: white;
+    }
+    .buttons:hover{
+        background-color: red;
+        color: white;
+    }
+    .ds{
+        border-radius: 3px;
+        height:300px; width:700x;border:1px solid black;
+        font:16px/26px Georgia, Garamond, Serif;
+        overflow:auto;
+        background-image: linear-gradient(orange,yellow ,green);
+    }
+</style>
+
+<div class="container">
+    {% for i in data %}
+    
+    <div class="row">
+        <div class="col-lg-4">
+            {{i.title}} <br>
+            <img src="{{i.image.url}}" alt=""> <br> 
+        </div>
+        <div class="col-lg-6 ds" > 
+            {{i.description}} <br>
+            {{i.created}} <br></div>
+            {% if user.is_superuser %}
+            <div class="col-lg-2 btns" >
+            <a href="{% url 'delete' i.id %} " class="btn btn-danger button">Delete</a>
+            <a href="{% url 'update' i.id %} " class="btn btn-warning buttons">Update</a>
+        </div>
+            {% endif %}
+    </div>
+    
+    <br>
+    
+    {% endfor %}
+    
+</div>
+{% endblock %}

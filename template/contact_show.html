@@ -1,0 +1,23 @@
+{% include 'base.html' %}
+{% block content %}
+
+<div class="container">
+
+    {% for j in data %}
+    
+    <div class="row">
+        <div class="col-lg-4">
+            {{j.name}}  
+        </div>
+        <div class="col-lg-8">
+            {{j.email}} <br>
+            {{j.suggestion}} 
+        </div>
+    </div>
+    
+    <br>
+    
+    {% endfor %}
+    
+</div>
+{% endblock %}
